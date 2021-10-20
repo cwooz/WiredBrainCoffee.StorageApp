@@ -6,7 +6,7 @@ namespace WiredBrainCoffee.StorageApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }

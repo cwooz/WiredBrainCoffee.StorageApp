@@ -1,0 +1,13 @@
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.exe
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.deps.json
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.runtimeconfig.json
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.runtimeconfig.dev.json
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.dll
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\bin\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.pdb
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.csprojAssemblyReference.cache
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.AssemblyInfoInputs.cache
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.AssemblyInfo.cs
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.csproj.CoreCompileInputs.cache
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.dll
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.pdb
+C:\Users\woosleyc\source\repos\#courses\c#-Generics-course_2\WiredBrainCoffee.StorageApp\WiredBrainCoffee.StorageApp\obj\Debug\netcoreapp3.1\WiredBrainCoffee.StorageApp.genruntimeconfig.cache
