@@ -10,10 +10,12 @@ namespace WiredBrainCoffee.StorageApp
         {
             var employeeRepository = new GenericRepository<Employee>();
 
+            employeeRepository.Add(new Employee { Id = 00, FirstName = "Tobe", LastName = "Removed" });
             employeeRepository.Add(new Employee { Id = 01, FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { Id = 02, FirstName = "Anna", LastName = "Roberts" });
             employeeRepository.Add(new Employee { Id = 03, FirstName = "Thomas", LastName = "Rollo" });
 
+            //employeeRepository.Remove();
             employeeRepository.Save();
 
 

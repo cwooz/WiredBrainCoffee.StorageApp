@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
@@ -12,6 +13,11 @@ namespace WiredBrainCoffee.StorageApp.Repositories
             _items.Add(item);
         }
 
+        public void Remove(T item)
+        {
+            _items.Remove(item);
+        }
+
         public void Save()
         {
             foreach (var item in _items)
@@ -20,4 +26,12 @@ namespace WiredBrainCoffee.StorageApp.Repositories
             }
         }
     }
+
+    //public class GenericRepositoryWithRemove<T, TKey> : GenericRepository<T, TKey>
+    //{
+    //    public void Remove(T item)
+    //    {
+    //        _items.Remove(item);
+    //    }
+    //}
 }
