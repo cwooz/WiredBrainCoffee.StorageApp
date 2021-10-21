@@ -13,7 +13,6 @@ namespace WiredBrainCoffee.StorageApp
             GetEmployeeById(employeeRepository);
             //employeeRepository.Remove();
 
-
             var organizationRepository = new GenericRepository<Organization>();
             AddOrganizations(organizationRepository);
         }
