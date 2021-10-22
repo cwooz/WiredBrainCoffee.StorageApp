@@ -1,5 +1,6 @@
 ﻿using WiredBrainCoffee.StorageApp.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
@@ -12,6 +13,11 @@ namespace WiredBrainCoffee.StorageApp.Repositories
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet;
         }
 
         public T GetById(int id)

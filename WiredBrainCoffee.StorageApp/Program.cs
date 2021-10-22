@@ -12,6 +12,8 @@ namespace WiredBrainCoffee.StorageApp
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
             GetEmployeeById(employeeRepository);
+            RemoveEmployee(employeeRepository, 1);
+            employeeRepository.Save();
 
             //var employeeListRepository = new ListRepository<Employee>();
             //AddEmployees(employeeListRepository);
@@ -19,6 +21,13 @@ namespace WiredBrainCoffee.StorageApp
 
             var organizationRepository = new ListRepository<Organization>();
             AddOrganizations(organizationRepository);
+            organizationRepository.Save();
+        }
+
+        private static void RemoveEmployee(IRepository<Employee> employeeRepository, int id)
+        {
+            var employeeToBeRemoved = employeeRepository.GetById(id);
+            employeeRepository.Remove(employeeToBeRemoved);
         }
 
         private static void GetEmployeeById(IRepository<Employee> employeeRepository)
@@ -33,8 +42,6 @@ namespace WiredBrainCoffee.StorageApp
             employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { FirstName = "Anna", LastName = "Roberts" });
             employeeRepository.Add(new Employee { FirstName = "Thomas", LastName = "Rollo" });
-
-            employeeRepository.Save();
         }
 
         private static void AddOrganizations(IRepository<Organization> organizationRepository)
@@ -42,8 +49,6 @@ namespace WiredBrainCoffee.StorageApp
             organizationRepository.Add(new Organization { Name = "Some Company" });
             organizationRepository.Add(new Organization { Name = "Another Company" });
             organizationRepository.Add(new Organization { Name = "Different Company" });
-
-            organizationRepository.Save();
         }
     }
 }
