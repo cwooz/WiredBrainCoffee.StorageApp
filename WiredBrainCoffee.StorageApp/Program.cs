@@ -11,29 +11,29 @@ namespace WiredBrainCoffee.StorageApp
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
-            GetEmployeeById(employeeRepository);
             RemoveEmployee(employeeRepository, 1);
-            employeeRepository.Save();
+            GetEmployeeById(employeeRepository);
+            WriteAllToConsole(employeeRepository);
 
-            //var employeeListRepository = new ListRepository<Employee>();
-            //AddEmployees(employeeListRepository);
-            //GetEmployeeById(employeeListRepository);
 
             var organizationRepository = new ListRepository<Organization>();
             AddOrganizations(organizationRepository);
             organizationRepository.Save();
         }
 
-        private static void RemoveEmployee(IRepository<Employee> employeeRepository, int id)
+        private static void WriteAllToConsole(IRepository<Employee> employeeRepository)
         {
-            var employeeToBeRemoved = employeeRepository.GetById(id);
-            employeeRepository.Remove(employeeToBeRemoved);
+            var items = employeeRepository.GetAll();
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         private static void GetEmployeeById(IRepository<Employee> employeeRepository)
         {
             var employee = employeeRepository.GetById(2);
-            Console.WriteLine($"Employee with Id of 2: {employee.FirstName}");
+            Console.WriteLine($"Employee with Id of 2: {employee.FirstName} {employee.LastName}");
         }
 
         private static void AddEmployees(IRepository<Employee> employeeRepository)
@@ -49,6 +49,12 @@ namespace WiredBrainCoffee.StorageApp
             organizationRepository.Add(new Organization { Name = "Some Company" });
             organizationRepository.Add(new Organization { Name = "Another Company" });
             organizationRepository.Add(new Organization { Name = "Different Company" });
+        }
+
+        private static void RemoveEmployee(IRepository<Employee> employeeRepository, int id)
+        {
+            var employeeToBeRemoved = employeeRepository.GetById(id);
+            employeeRepository.Remove(employeeToBeRemoved);
         }
     }
 }
