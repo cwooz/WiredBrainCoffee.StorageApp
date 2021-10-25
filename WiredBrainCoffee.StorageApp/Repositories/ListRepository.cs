@@ -32,6 +32,11 @@ namespace WiredBrainCoffee.StorageApp.Repositories
 
         public void Save()
         {
+            // Moved logic to PrintToConsole() method
+        }
+
+        public void PrintToConsole()
+        {
             foreach (var item in _items)
             {
                 Console.WriteLine(item);
