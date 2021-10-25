@@ -11,8 +11,8 @@ namespace WiredBrainCoffee.StorageApp
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
-            RemoveEmployee(employeeRepository, 1);
-            GetEmployeeById(employeeRepository);
+            RemoveEmployee(employeeRepository, 4);
+            GetEmployeeById(employeeRepository, 2);
             WriteAllToConsole(employeeRepository);
 
 
@@ -23,25 +23,27 @@ namespace WiredBrainCoffee.StorageApp
 
         private static void WriteAllToConsole(IRepository<Employee> employeeRepository)
         {
+            employeeRepository.Save();
             var items = employeeRepository.GetAll();
+
             foreach (var item in items)
             {
                 Console.WriteLine(item);
             }
         }
 
-        private static void GetEmployeeById(IRepository<Employee> employeeRepository)
+        private static void GetEmployeeById(IRepository<Employee> employeeRepository, int id)
         {
-            var employee = employeeRepository.GetById(2);
+            var employee = employeeRepository.GetById(id);
             Console.WriteLine($"Employee with Id of 2: {employee.FirstName} {employee.LastName}");
         }
 
         private static void AddEmployees(IRepository<Employee> employeeRepository)
         {
-            employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
-            employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { FirstName = "Anna", LastName = "Roberts" });
+            employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { FirstName = "Thomas", LastName = "Rollo" });
+            employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
         }
 
         private static void AddOrganizations(IRepository<Organization> organizationRepository)

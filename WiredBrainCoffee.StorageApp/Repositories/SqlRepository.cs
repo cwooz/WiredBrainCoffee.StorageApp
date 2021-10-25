@@ -28,7 +28,6 @@ namespace WiredBrainCoffee.StorageApp.Repositories
 
         public void Add(T item)
         {
-            //item.Id = _dbSet.Any() ? _dbSet.Max(item => item.Id) + 1 : 1;
             _dbSet.Add(item);
         }
 
