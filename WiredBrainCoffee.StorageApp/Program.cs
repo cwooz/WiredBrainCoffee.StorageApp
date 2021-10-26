@@ -52,7 +52,7 @@ namespace WiredBrainCoffee.StorageApp
                 new Employee { FirstName = "Julia", LastName = "Stevens" },
                 new Employee { FirstName = "Thomas", LastName = "Rollo" }
             };
-            AddBatch(employeeRepository, employees);
+            employeeRepository.AddBatch(employees);
         }
 
         private static void AddManagers(IWriteRepository<Manager> managerRepository)
@@ -62,7 +62,7 @@ namespace WiredBrainCoffee.StorageApp
                 new Manager { FirstName = "Brian", LastName = "Keller" },
                 new Manager { FirstName = "William", LastName = "Barfield" }
             };
-            AddBatch(managerRepository, managers);
+            managerRepository.AddBatch(managers);
         }
 
         private static void AddOrganizations(IRepository<Organization> organizationRepository)
@@ -73,16 +73,7 @@ namespace WiredBrainCoffee.StorageApp
                 new Organization { Name = "Another Company" },
                 new Organization { Name = "Different Company" }
             };
-            AddBatch(organizationRepository, organizations);
-        }
-
-        private static void AddBatch<T>(IWriteRepository<T> repository, T[] items)
-        {
-            foreach (var item in items)
-            {
-                repository.Add(item);
-            }
-            repository.Save();
+            organizationRepository.AddBatch(organizations);
         }
     }
 }
