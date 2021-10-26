@@ -13,19 +13,16 @@ namespace WiredBrainCoffee.StorageApp
             AddEmployees(employeeRepository);
             RemoveEmployee(employeeRepository, 4);
             GetEmployeeById(employeeRepository, 2);
-            employeeRepository.Save();
             WriteAllToConsole(employeeRepository);
 
 
             var organizationRepository = new ListRepository<Organization>();
             AddOrganizations(organizationRepository);
-            organizationRepository.PrintToConsole();
+            //organizationRepository.PrintToConsole();
             WriteAllToConsole(organizationRepository);
-
-            //IRepository<IEntity> repo = new ListRepository<Organization>();
         }
 
-        private static void WriteAllToConsole(IRepository<IEntity> repository)
+        private static void WriteAllToConsole(IReadRepository<IEntity> repository)
         {
             var items = repository.GetAll();
             foreach (var item in items)
@@ -46,6 +43,7 @@ namespace WiredBrainCoffee.StorageApp
             employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { FirstName = "Thomas", LastName = "Rollo" });
             employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
+            employeeRepository.Save();
         }
 
         private static void AddOrganizations(IRepository<Organization> organizationRepository)
@@ -53,12 +51,14 @@ namespace WiredBrainCoffee.StorageApp
             organizationRepository.Add(new Organization { Name = "Some Company" });
             organizationRepository.Add(new Organization { Name = "Another Company" });
             organizationRepository.Add(new Organization { Name = "Different Company" });
+            organizationRepository.Save();
         }
 
         private static void RemoveEmployee(IRepository<Employee> employeeRepository, int id)
         {
             var employeeToBeRemoved = employeeRepository.GetById(id);
             employeeRepository.Remove(employeeToBeRemoved);
+            employeeRepository.Save();
         }
     }
 }
