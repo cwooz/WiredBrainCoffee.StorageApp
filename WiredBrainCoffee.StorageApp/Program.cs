@@ -11,14 +11,13 @@ namespace WiredBrainCoffee.StorageApp
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
-            RemoveEmployee(employeeRepository, 4);
+            AddManagers(employeeRepository);
+            RemoveEmployee(employeeRepository, 1);
             GetEmployeeById(employeeRepository, 2);
             WriteAllToConsole(employeeRepository);
 
-
             var organizationRepository = new ListRepository<Organization>();
             AddOrganizations(organizationRepository);
-            //organizationRepository.PrintToConsole();
             WriteAllToConsole(organizationRepository);
         }
 
@@ -39,11 +38,18 @@ namespace WiredBrainCoffee.StorageApp
 
         private static void AddEmployees(IRepository<Employee> employeeRepository)
         {
+            employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
             employeeRepository.Add(new Employee { FirstName = "Anna", LastName = "Roberts" });
             employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
             employeeRepository.Add(new Employee { FirstName = "Thomas", LastName = "Rollo" });
-            employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
             employeeRepository.Save();
+        }
+
+        private static void AddManagers(IWriteRepository<Manager> managerRepository)
+        {
+            managerRepository.Add(new Manager { FirstName = "Brian", LastName = "Keller" });
+            managerRepository.Add(new Manager { FirstName = "William", LastName = "Barfield" });
+            managerRepository.Save();
         }
 
         private static void AddOrganizations(IRepository<Organization> organizationRepository)
