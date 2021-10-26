@@ -36,35 +36,53 @@ namespace WiredBrainCoffee.StorageApp
             Console.WriteLine($"Employee with Id of 2: {employee.FirstName} {employee.LastName}");
         }
 
-        private static void AddEmployees(IRepository<Employee> employeeRepository)
-        {
-            employeeRepository.Add(new Employee { FirstName = "Tobe", LastName = "Removed" });
-            employeeRepository.Add(new Employee { FirstName = "Anna", LastName = "Roberts" });
-            employeeRepository.Add(new Employee { FirstName = "Julia", LastName = "Stevens" });
-            employeeRepository.Add(new Employee { FirstName = "Thomas", LastName = "Rollo" });
-            employeeRepository.Save();
-        }
-
-        private static void AddManagers(IWriteRepository<Manager> managerRepository)
-        {
-            managerRepository.Add(new Manager { FirstName = "Brian", LastName = "Keller" });
-            managerRepository.Add(new Manager { FirstName = "William", LastName = "Barfield" });
-            managerRepository.Save();
-        }
-
-        private static void AddOrganizations(IRepository<Organization> organizationRepository)
-        {
-            organizationRepository.Add(new Organization { Name = "Some Company" });
-            organizationRepository.Add(new Organization { Name = "Another Company" });
-            organizationRepository.Add(new Organization { Name = "Different Company" });
-            organizationRepository.Save();
-        }
-
         private static void RemoveEmployee(IRepository<Employee> employeeRepository, int id)
         {
             var employeeToBeRemoved = employeeRepository.GetById(id);
             employeeRepository.Remove(employeeToBeRemoved);
             employeeRepository.Save();
+        }
+
+        private static void AddEmployees(IRepository<Employee> employeeRepository)
+        {
+            var employees = new[]
+            {
+                new Employee { FirstName = "Tobe", LastName = "Removed" },
+                new Employee { FirstName = "Anna", LastName = "Roberts" },
+                new Employee { FirstName = "Julia", LastName = "Stevens" },
+                new Employee { FirstName = "Thomas", LastName = "Rollo" }
+            };
+            AddBatch(employeeRepository, employees);
+        }
+
+        private static void AddManagers(IWriteRepository<Manager> managerRepository)
+        {
+            var managers = new[]
+            {
+                new Manager { FirstName = "Brian", LastName = "Keller" },
+                new Manager { FirstName = "William", LastName = "Barfield" }
+            };
+            AddBatch(managerRepository, managers);
+        }
+
+        private static void AddOrganizations(IRepository<Organization> organizationRepository)
+        {
+            var organizations = new[]
+            {
+                new Organization { Name = "Some Company" },
+                new Organization { Name = "Another Company" },
+                new Organization { Name = "Different Company" }
+            };
+            AddBatch(organizationRepository, organizations);
+        }
+
+        private static void AddBatch<T>(IWriteRepository<T> repository, T[] items)
+        {
+            foreach (var item in items)
+            {
+                repository.Add(item);
+            }
+            repository.Save();
         }
     }
 }
