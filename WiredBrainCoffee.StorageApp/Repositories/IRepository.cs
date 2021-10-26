@@ -3,7 +3,7 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    public interface IReadRepository<out T>
+    public interface IReadRepository<out T> where T : IEntity
     {
         IEnumerable<T> GetAll();
 
