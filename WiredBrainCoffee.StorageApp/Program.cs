@@ -11,7 +11,9 @@ namespace WiredBrainCoffee.StorageApp
         {
             //var employeeAdded = new ItemAdded<Employee>(EmployeeAdded);
             //ItemAdded<Employee> employeeAdded = EmployeeAdded;
-            var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(), EmployeeAdded);
+            //var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(), EmployeeAdded);
+            var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
+            employeeRepository.ItemAdded += EmployeeRepository_ItemAdded; ;
             AddEmployees(employeeRepository);
             AddManagers(employeeRepository);
             RepositoryExtensions.LineBreak();
@@ -21,20 +23,23 @@ namespace WiredBrainCoffee.StorageApp
             RepositoryExtensions.LineBreak();
 
             //Action<Organization> organizationAdded = OrganizationAdded;
-            var organizationRepository = new SqlRepository<Organization>(new StorageAppDbContext(), OrganizationAdded);
+            var organizationRepository = new SqlRepository<Organization>(new StorageAppDbContext());
+            organizationRepository.ItemAdded += OrganizationRepository_ItemAdded;
             AddOrganizations(organizationRepository);
             RepositoryExtensions.LineBreak();
             WriteAllToConsole(organizationRepository);
         }
 
-        private static void EmployeeAdded(Employee employee)
+        private static void EmployeeRepository_ItemAdded(object? sender, Employee employee)
         {
             Console.WriteLine($"Employee added => {employee.FirstName} {employee.LastName}");
+            Console.WriteLine($"From => {sender}");
         }
 
-        private static void OrganizationAdded(Organization organization)
+        private static void OrganizationRepository_ItemAdded(object? sender, Organization organization)
         {
             Console.WriteLine($"Organization added => {organization.Name}");
+            Console.WriteLine($"From => {sender}");
         }
 
         private static void WriteAllToConsole(IReadRepository<IEntity> repository)
