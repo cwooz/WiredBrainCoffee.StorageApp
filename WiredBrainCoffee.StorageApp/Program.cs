@@ -10,7 +10,7 @@ namespace WiredBrainCoffee.StorageApp
         static void Main(string[] args)
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
-            employeeRepository.ItemAdded += EmployeeRepository_ItemAdded;
+            employeeRepository.ItemAdded += Repository_ItemAdded;
             AddEmployees(employeeRepository);
             AddManagers(employeeRepository);
             RepositoryExtensions.LineBreak();
@@ -21,19 +21,18 @@ namespace WiredBrainCoffee.StorageApp
 
             //Action<Organization> organizationAdded = OrganizationAdded;
             var organizationRepository = new SqlRepository<Organization>(new StorageAppDbContext());
-            organizationRepository.ItemAdded += OrganizationRepository_ItemAdded;
+            organizationRepository.ItemAdded += Repository_ItemAdded;
             AddOrganizations(organizationRepository);
             RepositoryExtensions.LineBreak();
             WriteAllToConsole(organizationRepository);
         }
 
-        private static void EmployeeRepository_ItemAdded(object? sender, Employee employee)
+        private static void Repository_ItemAdded(object? sender, Employee employee)
         {
             Console.WriteLine($"Employee added => {employee.FirstName} {employee.LastName}");
-            //Console.WriteLine($"From => {sender}");
         }
 
-        private static void OrganizationRepository_ItemAdded(object? sender, Organization organization)
+        private static void Repository_ItemAdded(object? sender, Organization organization)
         {
             Console.WriteLine($"Organization added => {organization.Name}");
         }
