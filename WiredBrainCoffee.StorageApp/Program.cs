@@ -10,7 +10,7 @@ namespace WiredBrainCoffee.StorageApp
         static void Main(string[] args)
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
-            employeeRepository.ItemAdded += EmployeeRepository_ItemAdded; ;
+            employeeRepository.ItemAdded += EmployeeRepository_ItemAdded;
             AddEmployees(employeeRepository);
             AddManagers(employeeRepository);
             RepositoryExtensions.LineBreak();
